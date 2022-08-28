@@ -27,15 +27,15 @@ const dias = {
 
 const isAnimal = (scheduleTarget) => species.some((e) => e.name === scheduleTarget);
 
-const isDay = (scheduleTarget) => {
-  if (scheduleTarget !== 'Monday' && !isAnimal(scheduleTarget)) {
-    return species.some((e) => e.availability.some((el) => el === scheduleTarget));
-  }
-  if (scheduleTarget === 'Monday') {
-    return dias.Monday;
-  }
-  return false;
-};
+// const isDay = (scheduleTarget) => {
+//   if (scheduleTarget !== 'Monday' && !isAnimal(scheduleTarget)) {
+//     return species.some((e) => e.availability.some((el) => el === scheduleTarget));
+//   }
+//   if (scheduleTarget === 'Monday') {
+//     return dias.Monday;
+//   }
+//   return false;
+// };
 
 function getSchedule(scheduleTarget) {
   if (!scheduleTarget || !isAnimal(scheduleTarget)) {
