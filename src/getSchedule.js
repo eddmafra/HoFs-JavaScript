@@ -30,16 +30,6 @@ const isAnimal = (scheduleTarget) => species.some((e) => e.name === scheduleTarg
 
 const isDay = (scheduleTarget) => semana.some((e) => e === scheduleTarget);
 
-// const isDay = (scheduleTarget) => {
-//   if (scheduleTarget !== 'Monday' && !isAnimal(scheduleTarget)) {
-//     return species.some((e) => e.availability.some((el) => el === scheduleTarget));
-//   }
-//   if (scheduleTarget === 'Monday') {
-//     return dias.Monday;
-//   }
-//   return false;
-// };
-
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
     return { Monday: dias.Monday };
