@@ -2,6 +2,7 @@ const { species } = require('../data/zoo_data');
 const { hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+const semana = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 const dias = {
   Tuesday: { officeHour: `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`,
     exhibition: species.filter((e) => e.availability
@@ -27,6 +28,8 @@ const dias = {
 
 const isAnimal = (scheduleTarget) => species.some((e) => e.name === scheduleTarget);
 
+const isDay = (scheduleTarget) => semana.some((e) => e === scheduleTarget);
+
 // const isDay = (scheduleTarget) => {
 //   if (scheduleTarget !== 'Monday' && !isAnimal(scheduleTarget)) {
 //     return species.some((e) => e.availability.some((el) => el === scheduleTarget));
@@ -38,15 +41,16 @@ const isAnimal = (scheduleTarget) => species.some((e) => e.name === scheduleTarg
 // };
 
 function getSchedule(scheduleTarget) {
-  if (!scheduleTarget || !isAnimal(scheduleTarget)) {
-    return dias;
+  if (scheduleTarget === 'Monday') {
+    return { Monday: dias.Monday };
   }
   if (isAnimal(scheduleTarget)) {
     return species.find((e) => e.name === scheduleTarget).availability;
   }
-  // if (isDay(scheduleTarget)) {
-  //   return dias[scheduleTarget];
-  // }
+  if (isDay(scheduleTarget)) {
+    return { [scheduleTarget]: dias[scheduleTarget] };
+  }
+  return dias;
 }
 
 module.exports = getSchedule;
