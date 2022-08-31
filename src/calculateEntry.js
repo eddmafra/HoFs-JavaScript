@@ -17,9 +17,10 @@ function calculateEntry(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) {
     return 0;
   }
-  return Object.values(countEntrants(entrants))[0] * prices.child
-  + Object.values(countEntrants(entrants))[1] * prices.adult
-  + Object.values(countEntrants(entrants))[2] * prices.senior;
+  const pagantes = Object.values(countEntrants(entrants));
+  return pagantes[0] * prices.child
+  + pagantes[1] * prices.adult
+  + pagantes[2] * prices.senior;
 }
 
 module.exports = { calculateEntry, countEntrants };
