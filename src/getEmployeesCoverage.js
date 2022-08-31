@@ -12,13 +12,9 @@ const verifyEmployee = (teste) => {
 };
 
 const getEmployee = (param) => {
-  if (verifyEmployee(param)) {
-    if (param.name) {
-      return employees.find((e) => e.firstName === param.name || e.lastName === param.name);
-    }
-    if (param.id) {
-      return employees.find((e) => e.id === param.id);
-    }
+  if (verifyEmployee(param) && (param.name || param.id)) {
+    return employees
+      .find((e) => e.firstName === param.name || e.lastName === param.name || e.id === param.id);
   }
   throw new Error('Informações inválidas');
 };
